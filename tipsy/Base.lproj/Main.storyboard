@@ -12,31 +12,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$" textAlignment="right" minimumFontSize="75" id="6lt-vp-Xuw">
-                                <rect key="frame" x="16" y="29" width="278" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="1" green="0.51674073030000001" blue="0.39618396140000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="75"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                <connections>
-                                    <action selector="onBillAmountEdit:" destination="vXZ-lx-hvc" eventType="editingChanged" id="rkW-Nb-ktJ"/>
-                                </connections>
-                            </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="LMN-Ia-DpR">
-                                <rect key="frame" x="16" y="138" width="288" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="15%"/>
-                                    <segment title="18%"/>
-                                    <segment title="20%"/>
-                                    <segment title="22%"/>
-                                </segments>
-                                <connections>
-                                    <action selector="onBillAmountEdit:" destination="vXZ-lx-hvc" eventType="valueChanged" id="YDM-nE-F3C"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" id="oT5-S6-FiB">
-                                <rect key="frame" x="0.0" y="208" width="320" height="360"/>
+                                <rect key="frame" x="0.0" y="186" width="320" height="382"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GHc-9Z-vP7">
@@ -67,9 +44,46 @@
                                         <color key="textColor" red="1" green="0.96266998749999999" blue="0.529904716" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cog" id="Sov-T4-zRe">
+                                        <rect key="frame" x="6" y="340" width="32" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="30x-iy-Gca">
+                                        <rect key="frame" x="7" y="342" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="settingsButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RLR-5o-uVm"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.5167407302843734" blue="0.39618396137642264" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$" textAlignment="right" minimumFontSize="75" id="6lt-vp-Xuw">
+                                <rect key="frame" x="16" y="20" width="278" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="1" green="0.51674073030000001" blue="0.39618396140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="onBillAmountEdit:" destination="vXZ-lx-hvc" eventType="editingChanged" id="rkW-Nb-ktJ"/>
+                                </connections>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="LMN-Ia-DpR">
+                                <rect key="frame" x="16" y="129" width="288" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="15%"/>
+                                    <segment title="18%"/>
+                                    <segment title="20%"/>
+                                    <segment title="22%"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onBillAmountEdit:" destination="vXZ-lx-hvc" eventType="valueChanged" id="YDM-nE-F3C"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.96266998749999999" blue="0.529904716" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -79,9 +93,11 @@
                     </view>
                     <connections>
                         <outlet property="billLabel" destination="6lt-vp-Xuw" id="qFC-b5-vRL"/>
+                        <outlet property="settingsIcon" destination="Sov-T4-zRe" id="D9A-d9-KEH"/>
                         <outlet property="tipControl" destination="LMN-Ia-DpR" id="P2F-h4-Hfm"/>
                         <outlet property="tipLabel" destination="GHc-9Z-vP7" id="7p7-l8-LHs"/>
                         <outlet property="totalLabel" destination="sDu-KE-NyP" id="hgN-rR-fT9"/>
+                        <segue destination="Equ-Wv-3Jo" kind="modal" identifier="settingsPanel" id="iOf-1o-VZp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -93,7 +109,25 @@
             </objects>
             <point key="canvasLocation" x="234" y="406"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="wwt-Iz-2Ec">
+            <objects>
+                <viewController id="Equ-Wv-3Jo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p3s-vd-GbS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.96266998749999999" blue="0.529904716" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="IM3-Sw-aQO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J1E-7Z-RWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="588" y="406"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="cog" width="32" height="32"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
