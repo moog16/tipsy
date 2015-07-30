@@ -23,34 +23,28 @@ class ViewController: UIViewController {
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        billLabel.becomeFirstResponder()
-        
         if let lastUpdatedDate = defaults.objectForKey("lastUpdatedDate") as! NSDate? {
             let date = NSDate()
             let calendar = NSCalendar.currentCalendar()
             let components = calendar.components(.CalendarUnitMinute, fromDate: lastUpdatedDate, toDate: date, options: nil)
             let minutes = components.minute
-            var hasDefault = false
+            setLocale()
             
-            if minutes <= 10 {
-                if let previousBillLabel = defaults.stringForKey("billAmount") {
-                    billLabel.text = previousBillLabel
-                    hasDefault = true
-                }
-                if let previousTipLabel = defaults.stringForKey("tipAmount") {
-                    tipLabel.text = previousTipLabel
-                    hasDefault = true
-                }
-                
-                if hasDefault {
-                    onBillAmountEdit(self)
-                }
-                
-            } else if let defaultTipRateIndex = defaults.integerForKey("defaultTipRateIndex") as Int? {
+            if let defaultTipRateIndex = defaults.integerForKey("defaultTipRateIndex") as Int? {
                 tipControl.selectedSegmentIndex = defaultTipRateIndex
-                setLocale()
-            } else {
-                setLocale()
+            }
+            
+            if minutes <= 1 {
+                if let previousBillLabel = defaults.stringForKey("billAmount") {
+                    println("\(count(previousBillLabel))")
+                    if count(previousBillLabel) > 0 {
+                        billLabel.text = previousBillLabel
+                        if let previousTipIndex = defaults.integerForKey("tipAmountIndex") as Int? {
+                            tipControl.selectedSegmentIndex = previousTipIndex
+                            onBillAmountEdit(self)
+                        }
+                    }
+                }
             }
         }
         
@@ -61,7 +55,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("\(hasScreenLifted)")
+        billLabel.becomeFirstResponder()
         updateScreenHeight()
     }
 
@@ -77,7 +71,6 @@ class ViewController: UIViewController {
     
     func shiftScreenUp() {
         if !hasScreenLifted {
-            println("showKeyboard")
             self.view.frame.origin.y -= 150
             hasScreenLifted = true
         }
@@ -85,7 +78,6 @@ class ViewController: UIViewController {
     
     func shiftScreenDown() {
         if hasScreenLifted {
-            println("hideKeyboard")
             self.view.frame.origin.y += 150
             hasScreenLifted = false
         }
@@ -105,6 +97,13 @@ class ViewController: UIViewController {
         }
     }
     
+    func calculateTip(billAmount: Double, tipIndex: Int) -> Double {
+        let tipPercentages = [0.15, 0.18, 0.2, 0.22]
+        var tipPercentage = tipPercentages[tipIndex]
+        var tipAmount = billAmount * tipPercentage
+        return tipAmount
+    }
+    
     func setLocale() {
         let currencySymbol = NSNumberFormatter().currencySymbol
         tipLabel.text = currencySymbol
@@ -117,19 +116,16 @@ class ViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         var billAmountText = billLabel.text
         var billAmount = (billAmountText as NSString).doubleValue
-        
-        var tipPercentages = [0.15, 0.18, 0.2, 0.22]
-        var tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
-        var tipAmount = billAmount * tipPercentage
+        var tipAmount = calculateTip(billAmount, tipIndex: tipControl.selectedSegmentIndex)
         var totalAmount = billAmount + tipAmount
         
         tipLabel.text = formatCurrency(tipAmount)
         totalLabel.text = formatCurrency(totalAmount)
         
         defaults.setObject(billAmountText, forKey: "billAmount")
-        defaults.setObject(billAmountText, forKey: "billAmount")
+        defaults.setInteger(tipControl.selectedSegmentIndex, forKey: "tipAmountIndex")
         defaults.setObject(NSDate(), forKey: "lastUpdatedDate")
-        
+    
         if sender !== tipControl && sender !== self {
             updateScreenHeight()
         }

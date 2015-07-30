@@ -29,7 +29,6 @@ class SettingsController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         var defaultTipRateIndex = defaultTipControl.selectedSegmentIndex
         defaults.setInteger(defaultTipRateIndex, forKey: "defaultTipRateIndex")
-        println(defaultTipRateIndex)
     }
   
     @IBAction func onBackPressed(sender: AnyObject) {
