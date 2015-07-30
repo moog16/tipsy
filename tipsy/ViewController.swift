@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var settingsIcon: UIImageView!
     
+    var hasScreenLifted = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +45,7 @@ class ViewController: UIViewController {
                 if hasDefault {
                     onBillAmountEdit(self)
                 }
+                
             } else if let defaultTipRateIndex = defaults.integerForKey("defaultTipRateIndex") as Int? {
                 tipControl.selectedSegmentIndex = defaultTipRateIndex
                 setLocale()
@@ -50,6 +53,16 @@ class ViewController: UIViewController {
                 setLocale()
             }
         }
+        
+        if let previousHasScreenLifted = defaults.boolForKey("previousHasScreenLifted") as Bool? {
+            hasScreenLifted = previousHasScreenLifted
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        println("\(hasScreenLifted)")
+        updateScreenHeight()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,10 +70,39 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func savePreviousHasScreenLifted(hasScreenLifted: Bool) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(hasScreenLifted, forKey: "previousHasScreenLifted")
+    }
+    
+    func shiftScreenUp() {
+        if !hasScreenLifted {
+            println("showKeyboard")
+            self.view.frame.origin.y -= 150
+            hasScreenLifted = true
+        }
+    }
+    
+    func shiftScreenDown() {
+        if hasScreenLifted {
+            println("hideKeyboard")
+            self.view.frame.origin.y += 150
+            hasScreenLifted = false
+        }
+    }
+    
     func formatCurrency(amount: Double) -> String {
         var formatter = NSNumberFormatter()
         formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         return formatter.stringFromNumber(amount)!
+    }
+    
+    func updateScreenHeight() {
+        if count(billLabel.text) > 0 {
+            shiftScreenUp()
+        } else {
+            shiftScreenDown()
+        }
     }
     
     func setLocale() {
@@ -88,11 +130,18 @@ class ViewController: UIViewController {
         defaults.setObject(billAmountText, forKey: "billAmount")
         defaults.setObject(NSDate(), forKey: "lastUpdatedDate")
         
-        
+        if sender !== tipControl && sender !== self {
+            updateScreenHeight()
+        }
+
+        billLabel.placeholder = NSNumberFormatter().currencySymbol
 
     }
     
     @IBAction func onTap(sender: AnyObject) {
+        if hasScreenLifted {
+            shiftScreenDown()
+        }
         view.endEditing(true)
     }
     
