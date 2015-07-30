@@ -15,8 +15,8 @@ Completed:
 
 https://youtu.be/rnbJccoJ5Nk
 
-![Video Walkthrough Saving Default]("https://github.com/moog16/tipsy/blob/master/videoWalkthrough/default.gif")
-![Video Walkthrough Update Locale]("https://github.com/moog16/tipsy/blob/master/videoWalkthrough/locale.gif")
-![Video Walkthrough Saving Tip and Bill Amount]("https://github.com/moog16/tipsy/blob/master/videoWalkthrough/saveState.gif")
+![Video Walkthrough Saving Default](https://github.com/moog16/tipsy/blob/master/videoWalkthrough/default.gif)
+![Video Walkthrough Update Locale](https://github.com/moog16/tipsy/blob/master/videoWalkthrough/locale.gif)
+![Video Walkthrough Saving Tip and Bill Amount](https://github.com/moog16/tipsy/blob/master/videoWalkthrough/saveState.gif)
 
 Note: to embed the gif file, just check your gif file into your repo and update the name of the file above.
