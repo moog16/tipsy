@@ -36,7 +36,6 @@ class ViewController: UIViewController {
             
             if minutes <= 1 {
                 if let previousBillLabel = defaults.stringForKey("billAmount") {
-                    println("\(count(previousBillLabel))")
                     if count(previousBillLabel) > 0 {
                         billLabel.text = previousBillLabel
                         if let previousTipIndex = defaults.integerForKey("tipAmountIndex") as Int? {
