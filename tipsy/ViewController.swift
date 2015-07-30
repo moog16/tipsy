@@ -20,14 +20,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        let date = NSDate()
+        
+        billLabel.becomeFirstResponder()
         
         if let lastUpdatedDate = defaults.objectForKey("lastUpdatedDate") as! NSDate? {
-            
+            let date = NSDate()
             let calendar = NSCalendar.currentCalendar()
             let components = calendar.components(.CalendarUnitMinute, fromDate: lastUpdatedDate, toDate: date, options: nil)
             let minutes = components.minute
-            var hasDefault = false;
+            var hasDefault = false
             
             if minutes <= 10 {
                 if let previousBillLabel = defaults.stringForKey("billAmount") {
@@ -44,6 +45,9 @@ class ViewController: UIViewController {
                 }
             } else if let defaultTipRateIndex = defaults.integerForKey("defaultTipRateIndex") as Int? {
                 tipControl.selectedSegmentIndex = defaultTipRateIndex
+                setLocale()
+            } else {
+                setLocale()
             }
         }
     }
@@ -51,6 +55,20 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func formatCurrency(amount: Double) -> String {
+        var formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        return formatter.stringFromNumber(amount)!
+    }
+    
+    func setLocale() {
+        let currencySymbol = NSNumberFormatter().currencySymbol
+        tipLabel.text = currencySymbol
+        totalLabel.text = currencySymbol
+        billLabel.placeholder = currencySymbol
+        
     }
 
     @IBAction func onBillAmountEdit(sender: AnyObject) {
@@ -63,9 +81,10 @@ class ViewController: UIViewController {
         var tipAmount = billAmount * tipPercentage
         var totalAmount = billAmount + tipAmount
         
-        tipLabel.text = String(format: "$%.2f", tipAmount)
-        totalLabel.text = String(format: "$%.2f", totalAmount)
+        tipLabel.text = formatCurrency(tipAmount)
+        totalLabel.text = formatCurrency(totalAmount)
         
+        defaults.setObject(billAmountText, forKey: "billAmount")
         defaults.setObject(billAmountText, forKey: "billAmount")
         defaults.setObject(NSDate(), forKey: "lastUpdatedDate")
         
@@ -78,7 +97,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func settingsButtonPressed(sender: AnyObject) {
-        performSegueWithIdentifier("settingsPanel", sender: self)
+        performSegueWithIdentifier("settingsModal", sender: self)
     }
 }
 

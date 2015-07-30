@@ -16,32 +16,25 @@
                                 <rect key="frame" x="0.0" y="186" width="320" height="382"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GHc-9Z-vP7">
-                                        <rect key="frame" x="163" y="8" width="149" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="textColor" red="1" green="0.96266998749884602" blue="0.52990471603422751" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sDu-KE-NyP">
                                         <rect key="frame" x="40" y="77" width="272" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                        <color key="textColor" red="1" green="0.96266998749999999" blue="0.529904716" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fhh-5V-I4x">
                                         <rect key="frame" x="8" y="17" width="27" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="textColor" red="1" green="0.96266998749999999" blue="0.529904716" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cag-YB-oBI">
                                         <rect key="frame" x="8" y="88" width="30" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                        <color key="textColor" red="1" green="0.96266998749999999" blue="0.529904716" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cog" id="Sov-T4-zRe">
@@ -58,13 +51,21 @@
                                             <action selector="settingsButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RLR-5o-uVm"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GHc-9Z-vP7">
+                                        <rect key="frame" x="163" y="8" width="149" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.5167407302843734" blue="0.39618396137642264" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.21477834649999999" green="0.59652055339999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$" textAlignment="right" minimumFontSize="75" id="6lt-vp-Xuw">
                                 <rect key="frame" x="16" y="20" width="278" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="1" green="0.51674073030000001" blue="0.39618396140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.21477834649999999" green="0.59652055339999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="75"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
@@ -85,7 +86,7 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.96266998749999999" blue="0.529904716" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Yfk-kU-FVH" appends="YES" id="Lyd-oB-xU2"/>
@@ -97,7 +98,7 @@
                         <outlet property="tipControl" destination="LMN-Ia-DpR" id="P2F-h4-Hfm"/>
                         <outlet property="tipLabel" destination="GHc-9Z-vP7" id="7p7-l8-LHs"/>
                         <outlet property="totalLabel" destination="sDu-KE-NyP" id="hgN-rR-fT9"/>
-                        <segue destination="Equ-Wv-3Jo" kind="modal" identifier="settingsPanel" id="iOf-1o-VZp"/>
+                        <segue destination="Equ-Wv-3Jo" kind="modal" identifier="settingsModal" id="iOf-1o-VZp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -109,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="234" y="406"/>
         </scene>
-        <!--SettingsModal-->
+        <!--Settings Controller-->
         <scene sceneID="wwt-Iz-2Ec">
             <objects>
-                <viewController title="SettingsModal" id="Equ-Wv-3Jo" customClass="SettingsController" customModule="tipsy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Equ-Wv-3Jo" customClass="SettingsController" customModule="tipsy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p3s-vd-GbS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,7 +122,7 @@
                                 <rect key="frame" x="16" y="68" width="220" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.51674073030000001" blue="0.39618396140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Cy3-tT-yia">
@@ -133,6 +134,7 @@
                                     <segment title="20%"/>
                                     <segment title="22%"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="onDefaultTipChanged:" destination="Equ-Wv-3Jo" eventType="valueChanged" id="127-rC-60w"/>
                                 </connections>
@@ -141,6 +143,7 @@
                                 <rect key="frame" x="16" y="30" width="49" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="&lt; Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -148,7 +151,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.96266998749999999" blue="0.529904716" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.21477834649999999" green="0.59652055339999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="IM3-Sw-aQO"/>
                     <connections>
@@ -157,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1E-7Z-RWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="680" y="406"/>
+            <point key="canvasLocation" x="623" y="406"/>
         </scene>
     </scenes>
     <resources>
