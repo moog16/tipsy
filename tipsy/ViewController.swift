@@ -18,11 +18,33 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let billLabelDefault = defaults.stringForKey("billAmount") {
-            billLabel.text = billLabelDefault
+        let date = NSDate()
+        
+        if let lastUpdatedDate = defaults.objectForKey("lastUpdatedDate") as! NSDate? {
+            
+            let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components(.CalendarUnitMinute, fromDate: lastUpdatedDate, toDate: date, options: nil)
+            let minutes = components.minute
+            var hasDefault = false;
+            
+            if minutes <= 10 {
+                if let previousBillLabel = defaults.stringForKey("billAmount") {
+                    billLabel.text = previousBillLabel
+                    hasDefault = true
+                }
+                if let previousTipLabel = defaults.stringForKey("tipAmount") {
+                    tipLabel.text = previousTipLabel
+                    hasDefault = true
+                }
+                
+                if hasDefault {
+                    onBillAmountEdit(self)
+                }
+            } else if let defaultTipRateIndex = defaults.integerForKey("defaultTipRateIndex") as Int? {
+                tipControl.selectedSegmentIndex = defaultTipRateIndex
+            }
         }
     }
 
@@ -35,7 +57,6 @@ class ViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         var billAmountText = billLabel.text
         var billAmount = (billAmountText as NSString).doubleValue
-        defaults.setObject(billAmountText, forKey: "billAmount")
         
         var tipPercentages = [0.15, 0.18, 0.2, 0.22]
         var tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
@@ -45,11 +66,17 @@ class ViewController: UIViewController {
         tipLabel.text = String(format: "$%.2f", tipAmount)
         totalLabel.text = String(format: "$%.2f", totalAmount)
         
+        defaults.setObject(billAmountText, forKey: "billAmount")
+        defaults.setObject(NSDate(), forKey: "lastUpdatedDate")
+        
+        
 
     }
+    
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
     }
+    
     @IBAction func settingsButtonPressed(sender: AnyObject) {
         performSegueWithIdentifier("settingsPanel", sender: self)
     }
