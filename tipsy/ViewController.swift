@@ -50,17 +50,18 @@ class ViewController: UIViewController {
         if let previousHasScreenLifted = defaults.boolForKey("previousHasScreenLifted") as Bool? {
             hasScreenLifted = previousHasScreenLifted
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "setLocale",
+            name: UIApplicationDidBecomeActiveNotification,
+            object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         billLabel.becomeFirstResponder()
         updateScreenHeight()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func savePreviousHasScreenLifted(hasScreenLifted: Bool) {
@@ -103,7 +104,7 @@ class ViewController: UIViewController {
         return tipAmount
     }
     
-    func setLocale() {
+    @objc func setLocale() {
         let currencySymbol = NSNumberFormatter().currencySymbol
         tipLabel.text = currencySymbol
         totalLabel.text = currencySymbol

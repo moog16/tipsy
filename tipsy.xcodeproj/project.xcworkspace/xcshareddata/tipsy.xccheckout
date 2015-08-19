@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0DF7AE69-4620-4A2E-9BC2-256A9A88A1E5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>tipsy</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7CD24CCE3A0D4DC3F8E063CB49D3D6655D113606</key>
+		<string>https://github.com/moog16/tipsy.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>tipsy.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7CD24CCE3A0D4DC3F8E063CB49D3D6655D113606</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/moog16/tipsy.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7CD24CCE3A0D4DC3F8E063CB49D3D6655D113606</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7CD24CCE3A0D4DC3F8E063CB49D3D6655D113606</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tipsy</string>
+		</dict>
+	</array>
+</dict>
+</plist>
