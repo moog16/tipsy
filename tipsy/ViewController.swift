@@ -112,6 +112,10 @@ class ViewController: UIViewController {
         
     }
 
+    @IBAction func onBillAmountFocus(sender: AnyObject) {
+        updateScreenHeight()
+    }
+    
     @IBAction func onBillAmountEdit(sender: AnyObject) {
         let defaults = NSUserDefaults.standardUserDefaults()
         var billAmountText = billLabel.text
