@@ -15,8 +15,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var settingsIcon: UIImageView!
+    @IBOutlet weak var totalUIScreen: UIView!
     
     var hasScreenLifted = false
+    let themes = [
+        "lightThemeColor": UIColor(
+                red: 55/225,
+                green: 152/255,
+                blue: 1,
+                alpha: 1
+            ),
+        "darkThemeColor": UIColor(
+            red: 1,
+            green: 156/255,
+            blue: 105/255,
+            alpha: 1
+        )
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +66,11 @@ class ViewController: UIViewController {
             hasScreenLifted = previousHasScreenLifted
         }
         
+        setColorSchemaAndSetBackground()
+        
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "setLocale",
+            selector: "backToMainView",
             name: UIApplicationDidBecomeActiveNotification,
             object: nil)
     }
@@ -62,6 +79,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         billLabel.becomeFirstResponder()
         updateScreenHeight()
+        setColorSchemaAndSetBackground()
     }
     
     func savePreviousHasScreenLifted(hasScreenLifted: Bool) {
@@ -97,6 +115,28 @@ class ViewController: UIViewController {
         }
     }
     
+    func setColorSchemaAndSetBackground() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let color: UIColor?
+        if let isLightTheme = defaults.boolForKey("isLightTheme") as Bool? {
+            println("has default theme set")
+            if isLightTheme {
+                println("LIGHT")
+                color = themes["lightThemeColor"]
+            } else {
+                println("DARK")
+                color = themes["darkThemeColor"]
+            }
+            totalUIScreen.backgroundColor = color
+            tipControl.tintColor = color
+            billLabel.textColor = color
+
+        } else {
+            println("doesn't have default set")
+            defaults.setBool(true, forKey: "isLightTheme")
+        }
+    }
+    
     func calculateTip(billAmount: Double, tipIndex: Int) -> Double {
         let tipPercentages = [0.15, 0.18, 0.2, 0.22]
         var tipPercentage = tipPercentages[tipIndex]
@@ -104,7 +144,12 @@ class ViewController: UIViewController {
         return tipAmount
     }
     
-    @objc func setLocale() {
+    @objc func backToMainView() {
+        setLocale()
+        setColorSchemaAndSetBackground()
+    }
+    
+    func setLocale() {
         let currencySymbol = NSNumberFormatter().currencySymbol
         tipLabel.text = currencySymbol
         totalLabel.text = currencySymbol

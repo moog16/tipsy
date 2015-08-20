@@ -99,6 +99,7 @@
                         <outlet property="tipControl" destination="LMN-Ia-DpR" id="P2F-h4-Hfm"/>
                         <outlet property="tipLabel" destination="GHc-9Z-vP7" id="7p7-l8-LHs"/>
                         <outlet property="totalLabel" destination="sDu-KE-NyP" id="hgN-rR-fT9"/>
+                        <outlet property="totalUIScreen" destination="oT5-S6-FiB" id="QdN-92-dkJ"/>
                         <segue destination="Equ-Wv-3Jo" kind="modal" identifier="settingsModal" id="iOf-1o-VZp"/>
                     </connections>
                 </viewController>
@@ -151,12 +152,27 @@
                                     <action selector="onBackPressed:" destination="Equ-Wv-3Jo" eventType="touchUpInside" id="OiB-Ig-JBn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Theme" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZVf-te-Pzd">
+                                <rect key="frame" x="16" y="213" width="162" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="vuy-8F-g2Q">
+                                <rect key="frame" x="255" y="213" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="onThemeSwitchChanged:" destination="Equ-Wv-3Jo" eventType="valueChanged" id="dxi-YJ-biB"/>
+                                </connections>
+                            </switch>
                         </subviews>
-                        <color key="backgroundColor" red="0.21477834649999999" green="0.59652055339999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.21568627450980393" green="0.59607843137254901" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="IM3-Sw-aQO"/>
                     <connections>
                         <outlet property="defaultTipControl" destination="Cy3-tT-yia" id="WBC-9y-kNM"/>
+                        <outlet property="themeSwitch" destination="vuy-8F-g2Q" id="DpO-X5-h4k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1E-7Z-RWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
