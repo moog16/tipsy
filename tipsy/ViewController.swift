@@ -62,10 +62,6 @@ class ViewController: UIViewController {
             }
         }
         
-        if let previousHasScreenLifted = defaults.boolForKey("previousHasScreenLifted") as Bool? {
-            hasScreenLifted = previousHasScreenLifted
-        }
-        
         setColorSchemaAndSetBackground()
         
         NSNotificationCenter.defaultCenter().addObserver(
@@ -80,11 +76,6 @@ class ViewController: UIViewController {
         billLabel.becomeFirstResponder()
         updateScreenHeight()
         setColorSchemaAndSetBackground()
-    }
-    
-    func savePreviousHasScreenLifted(hasScreenLifted: Bool) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setBool(hasScreenLifted, forKey: "previousHasScreenLifted")
     }
     
     func shiftScreenUp() {
@@ -108,31 +99,18 @@ class ViewController: UIViewController {
     }
     
     func updateScreenHeight() {
-        if count(billLabel.text) > 0 {
-            shiftScreenUp()
-        } else {
-            shiftScreenDown()
-        }
+        count(billLabel.text) > 0 ? shiftScreenUp() : shiftScreenDown()
     }
     
     func setColorSchemaAndSetBackground() {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let color: UIColor?
         if let isLightTheme = defaults.boolForKey("isLightTheme") as Bool? {
-            println("has default theme set")
-            if isLightTheme {
-                println("LIGHT")
-                color = themes["lightThemeColor"]
-            } else {
-                println("DARK")
-                color = themes["darkThemeColor"]
-            }
+            let color = isLightTheme ? themes["lightThemeColor"] : themes["darkThemeColor"]
             totalUIScreen.backgroundColor = color
             tipControl.tintColor = color
             billLabel.textColor = color
 
         } else {
-            println("doesn't have default set")
             defaults.setBool(true, forKey: "isLightTheme")
         }
     }
@@ -154,7 +132,6 @@ class ViewController: UIViewController {
         tipLabel.text = currencySymbol
         totalLabel.text = currencySymbol
         billLabel.placeholder = currencySymbol
-        
     }
 
     @IBAction func onBillAmountFocus(sender: AnyObject) {
